@@ -105,6 +105,7 @@ AddEventHandler('explosionEvent', function(source, ev)
 end)
 
 AddEventHandler("playerJoining", function(newID, oldID) --[[ Name Change Logs / Discord Ace Perms. ]]
+	local newID = source
 	local ids = ServerFunc.ExtractIdentifiers(newID)
 	local oldName = GetResourceKvpString("JD_logs:nameChane:"..ids.license)
 	if oldName == nil then

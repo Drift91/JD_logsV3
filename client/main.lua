@@ -73,7 +73,7 @@ CreateThread(function()
     local fireCount = 0
     while Config.weaponLog do --[[ Checking if shooting logs is enabled. ]]
         Wait(0)
-        local playerped = GetPlayerPed(PlayerId())
+        local playerped = PlayerPedId()
         if IsPedShooting(playerped) then --[[ if the player is shooting we want to start counting the shots. ]]
             fireWeapon = GetSelectedPedWeapon(playerped)
             fireCount = fireCount + 1

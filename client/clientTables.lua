@@ -137,6 +137,11 @@ ClientTables.WeaponNames = {
 	[tostring(GetHashKey('WEAPON_AIR_DEFENCE_GUN'))] = 'Air Defence Gun',
 	[tostring(GetHashKey('WEAPON_ANIMAL'))] = 'Animal',
 	[tostring(GetHashKey('WEAPON_COUGAR'))] = 'Cougar',
+
+	[tostring(GetHashKey('VEHICLE_WEAPON_RCTANK_GUN'))] = 'Invade & Persuade Tank',
+	[tostring(GetHashKey('VEHICLE_WEAPON_RCTANK_FLAME'))] = 'Invade & Persuade Tank',
+	[tostring(GetHashKey('VEHICLE_WEAPON_RCTANK_ROCKET'))] = 'Invade & Persuade Tank',
+	[tostring(GetHashKey('VEHICLE_WEAPON_RCTANK_LAZER'))] = 'Invade & Persuade Tank',
 }
 
 ClientTables.deatCause = {

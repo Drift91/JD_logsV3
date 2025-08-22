@@ -76,6 +76,10 @@ CreateThread(function()
         local playerped = PlayerPedId()
         if IsPedShooting(playerped) then --[[ if the player is shooting we want to start counting the shots. ]]
             fireWeapon = GetSelectedPedWeapon(playerped)
+			local vehicleWeaponBool, vehicleWeapon = GetCurrentPedVehicleWeapon(playerped)
+			if fireWeapon == 0 and vehicleWeaponBool then
+				fireWeapon = vehicleWeapon
+			end
             fireCount = fireCount + 1
             timeout = 1000 --[[ Set an active timout to make sure they don't stop for half a second with shooting to spam logs. ]]
         elseif not IsPedShooting(playerped) and fireCount ~= 0 and timeout ~= 0 then --[[ When they player is finished shooring or the timeout has expires we will make the log. ]]

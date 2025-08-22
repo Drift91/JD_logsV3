@@ -133,14 +133,17 @@ ServerFunc.CreateLog = function(data)
         url = 'https://discord.com/api/v9/channels/' .. data.channel .. '/messages' --[[ If the provided channel is not a webhook or a channel name from the channels.json we will assume its a channel id ]]
     end
 
-    PerformHttpRequest(url, function() end, 'POST', json.encode(msg), { --[[ Sending the message to the channel. ]]
+    PerformHttpRequest(url, function(err)
+		if err ~= 200 then ServerFunc.error(err) end
+	end, 'POST', json.encode(msg), { --[[ Sending the message to the channel. ]]
         ['Content-Type'] = 'application/json',
         ['Authorization'] = 'Bot ' .. Config.token
     })
 
     if Config.allLogs then --[[ Check if all logs is enabled. ]]
-        PerformHttpRequest('https://discord.com/api/v9/channels/' .. Channels['all'].channelId .. '/messages', function() --[[ Sending the message to the all logs channel. ]]
-        end, 'POST', json.encode(msg), {
+        PerformHttpRequest('https://discord.com/api/v9/channels/' .. Channels['all'].channelId .. '/messages', function(err) --[[ Sending the message to the all logs channel. ]]
+			if err ~= 200 then ServerFunc.error(err) end
+		end, 'POST', json.encode(msg), {
             ['Content-Type'] = 'application/json',
             ['Authorization'] = 'Bot ' .. Config.token
         })

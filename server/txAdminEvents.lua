@@ -18,14 +18,14 @@ AddEventHandler('txAdmin:events:playerKicked', function(data)
 end)
 
 AddEventHandler('txAdmin:events:playerWarned', function(data)
-	ServerFunc.CreateLog({EmbedMessage = ("**%s** Warned **%s**\nAction Id: `%s`\nReason: `%s`"):format(data.author, GetPlayerName(data.target), data.actionId, data.reason), player_id = data.target, channel = 'txAdmin'})
+	ServerFunc.CreateLog({EmbedMessage = ("**%s** Warned **%s**\nAction Id: `%s`\nReason: `%s`"):format(data.author, data.targetName, data.actionId, data.reason), player_id = data.target, channel = 'txAdmin'})
 end)
 
 AddEventHandler('txAdmin:events:playerBanned', function(data)
 	if data.expiration == false then
-		ServerFunc.CreateLog({EmbedMessage = ("**%s** Banned **%s**\nAction Id: `%s`\nReason: `%s`\nExpire: `Perm`"):format(data.author, names[data.target], data.actionId, data.reason), channel = 'txAdmin'})
+		ServerFunc.CreateLog({EmbedMessage = ("**%s** Banned **%s**\nAction Id: `%s`\nReason: `%s`\nExpire: `Perm`"):format(data.author, data.targetName, data.actionId, data.reason), channel = 'txAdmin'})
 	else
-		ServerFunc.CreateLog({EmbedMessage = ("**%s** Banned **%s**\nAction Id: `%s`\nReason: `%s`\nExpire: `%s`"):format(data.author, names[data.target], data.actionId, data.reason, data.expiration), channel = 'txAdmin'})
+		ServerFunc.CreateLog({EmbedMessage = ("**%s** Banned **%s**\nAction Id: `%s`\nReason: `%s`\nExpire: `%s`"):format(data.author, data.targetName, data.actionId, data.reason, data.expiration), channel = 'txAdmin'})
 	end
 end)
 

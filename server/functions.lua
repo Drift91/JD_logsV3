@@ -378,3 +378,29 @@ ServerFunc.decode = function(str)
     str = string.gsub (str, "\r\n", "\n")
     return str
 end
+
+local current_error_code = nil
+local error_codes_defined = {
+	[200] = 'OK - The request was completed successfully..!',
+	[400] = "Error - The request was improperly formatted, or the server couldn't understand it..!",
+	[401] = 'Error - The Authorization header was missing or invalid..! Your Discord Token is probably wrong or does not have correct permissions attributed to it.',
+	[403] = 'Error - The Authorization token you passed did not have permission to the resource..! Your Discord Token is probably wrong or does not have correct permissions attributed to it.',
+	[404] = "Error - The resource at the location specified doesn't exist.",
+	[429] = 'Error - Too many requests, you hit the Discord rate limit. https://discord.com/developers/docs/topics/rate-limits',
+	[502] = 'Error - Discord API may be down?...'
+}
+
+ServerFunc.error = function(err)
+	Citizen.CreateThread(function()
+	
+		if not current_error_code == err then
+			str = error_codes_defined[err]
+			print('^1JD_logsV3 - ' .. str .. '^7')
+			
+			-- Prevent spamming the console
+			current_error_code = err
+			Citizen.Wait(60 * 1000)
+			current_error_code = nil
+		end
+	end)
+end

@@ -117,7 +117,7 @@ AddEventHandler("playerJoining", function(newID, oldID) --[[ Name Change Logs / 
 			for k,v in pairs(GetPlayers()) do
 				if IsPlayerAceAllowed(v, Config.NameChangePerms) then
 					TriggerClientEvent('chat:addMessage', v, {
-						template = '<div style="background-color: rgba(90, 90, 90, 0.9); text-align: center; border-radius: 0.5vh; padding: 0.7vh; font-size: 1.7vh;"><b>Player ^1{0} ^0{1} ^1{2}</b></div>',
+						template = '<div style="background-color: rgba(90, 90, 90, 0.9); text-align: center; border-radius: 0.5vh; padding: 0.7vh; font-size: 1.7vh;"><b>^1{0}</b></div>',
 						args = { lang.nameChange.game_msg:gsub("{old_name}", oldName):gsub("{new_name}", GetPlayerName(newID)) }
 					})
 				end

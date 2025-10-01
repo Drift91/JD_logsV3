@@ -91,7 +91,7 @@ CreateThread(function()
             end
             if fireCount ~= 0 and timeout == 0 then --[[ When the timer is 0 and the weapon fire count is higher than 0 we will make a log. ]]
                 if not ClientTables.WeaponNames[tostring(fireWeapon)] then --[[ Weapon info not found. creating log without weapon info. ]]
-                    TriggerServerEvent('Prefech:JD_logsV3:playerShotWeapon', lang.shooting.undefined, fireCount)
+                    TriggerServerEvent('Prefech:JD_logsV3:playerShotWeapon', tostring(fireWeapon), fireCount)
                     return
                 end
                 isLoggedWeapon = true

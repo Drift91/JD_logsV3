@@ -19,8 +19,7 @@
         "msg": "**{name}** heeft een explosie veroorzaakt.\n**Type:** `{type}`"
     },
     "shooting": {
-        "msg": "**{name}** schoot een `{weapon}` `{count} keer`",
-        "undefined": "Undefined"
+        "msg": "**{name}** schoot een `{weapon}` `{count} keer`"
     },
     "damage": {
         "msg": "**{name}** Is beschadigd door `{type}` en heeft `{health}` health verloren",

@@ -141,6 +141,9 @@ CreateThread(function()
 				local kPed = GetPedSourceOfDeath(iPed)
 				local cause = GetPedCauseOfDeath(iPed)
 				local DeathCause = ClientTables.deatCause[cause]
+				if DeathCause == nil then
+					DeathCause = {tostring(cause), nil}
+				end
 				local killer = 0
 				local kPlayer = NetworkGetPlayerIndexFromPed(kPed)
 				Wait(1000)

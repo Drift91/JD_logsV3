@@ -73,5 +73,5 @@ ServerExplotions.ExplosionNames = {
 	['SCRIPT_DRONE'] = 'SCRIPT_DRONE',
 	['RAYGUN'] = 'RAYGUN',
 	['BURIEDMINE'] = 'BURIEDMINE',
-	['SCRIPT_MISSIL'] = 'SCRIPT_MISSIL'
+	['SCRIPT_MISSILE'] = 'SCRIPT_MISSILE'
 }

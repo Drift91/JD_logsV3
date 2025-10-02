@@ -14,6 +14,7 @@ ServerExplotions.ExplosionNames = {
 	['BIKE'] = 'Vehicle: Bike',
 	['DIR_STEAM'] = 'DIR_STEAM',
 	['DIR_FLAME'] = 'DIR_FLAME',
+	['WATER_HYDRANT'] = 'Water: Fire Hydrant',
 	['DIR_GAS_CANISTER'] = 'Gas Canister',
 	['GAS_CANISTER'] = 'Gas Canister',
 	['BOAT'] = 'Vehicle: Boat',

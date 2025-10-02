@@ -57,7 +57,8 @@
             "weapon": "**{name}** is `{type}` (*{weapon}*) door **Onbekend**",
             "event": "**{name}** is `{type}` door **Onbekend**",
             "other": "**{name}** is `Killed` door **Onbekend**"
-        }
+        },
+        "undefined": "Killed"
     },
     "permission": {
         "msg": "Machtigingen/groepen toegevoegd aan **{name}**"

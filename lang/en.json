@@ -57,7 +57,8 @@
             "weapon": "**{name}** has been `{type}` (*{weapon}*) by **Unknown**",
             "event": "**{name}** has been `{type}` by **Unknown**",
             "other": "**{name}** has been `Killed` by **Unknown**"
-        }
+        },
+        "undefined": "Killed"
     },
     "permission": {
         "msg": "Permissions/Groups added to **{name}**"

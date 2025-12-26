@@ -13,17 +13,31 @@ ServerFunc.CreateLog = function(data)
 		return print('^1Error:^0 Issue loading config file. Please follow the installation guild on the docs: https://docs.prefech.com')
 	end
 
-    if data.screenshot then --[[ this log requires a screenshot to be made so we will transfer to client to grab a screenshot. ]]
+    if data.screenshot then --[[ this log requires a screenshot to be made. ]]
         local channelsLoadFile = LoadResourceFile(GetCurrentResourceName(), "./config/channels.json")
         local theFile = json.decode(channelsLoadFile)
         data.url = theFile.imageStore.webhookID.."/"..theFile.imageStore.webhookToken
-        return TriggerClientEvent('Prefech:JD_logsV3:ClientCreateScreenshot', data.player_id, data)
+		return exports.screencapture:remoteUpload(data.player_id, 'https://discord.com/api/webhooks/'..data.url, {},
+		function(resp)
+			if resp.attachments then
+				data.imageUrl = resp.attachments[1].url
+				data.screenshot = false
+				TriggerEvent('Prefech:JD_logsV3:ScreenshotCB', data)
+			end
+		end, "blob")
     end
-    if data.screenshot_2 then --[[ this log requires a second screenshot to be made so we will transfer to client to grab a screenshot. ]]
+    if data.screenshot_2 then --[[ this log requires a second screenshot. ]]
         local channelsLoadFile = LoadResourceFile(GetCurrentResourceName(), "./config/channels.json")
         local theFile = json.decode(channelsLoadFile)
         data.url = theFile.imageStore.webhookID.."/"..theFile.imageStore.webhookToken
-        return TriggerClientEvent('Prefech:JD_logsV3:ClientCreateScreenshot', data.player_2_id, data)
+		return exports.screencapture:remoteUpload(data.player_2_id, 'https://discord.com/api/webhooks/'..data.url, {},
+		function(resp)
+			if resp.attachments then
+				data.imageUrl_2 = resp.attachments[1].url
+				data.screenshot_2 = false
+				TriggerEvent('Prefech:JD_logsV3:ScreenshotCB', data)
+			end
+		end, "blob")
     end
     newTitle = data.channel:gsub("^%l", string.upper) --[[ Format the title to the first word on upper case. ]]
     if not Channels[data.channel] or data.title then --[[ Check if the channel is in the channels.json and we make sure the user has not set a custom title. ]]

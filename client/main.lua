@@ -25,25 +25,6 @@ AddEventHandler("Prefech:JD_logsV3:SendConfigSettings", function(data)
         end
 end)
 
---[[ Screenshot request on client. ]]
-RegisterNetEvent('Prefech:JD_logsV3:ClientCreateScreenshot')
-AddEventHandler('Prefech:JD_logsV3:ClientCreateScreenshot', function(args)
-    exports['screenshot-basic']:requestScreenshotUpload('https://discord.com/api/webhooks/'..args.url, 'files[]', function(data)
-        local resp = json.decode(data)
-		if resp.attachments then
-            if args.screenshot then
-                args.imageUrl = resp.attachments[1].url
-                args.screenshot = false
-            end
-            if args.screenshot_2 and not args.screenshot then
-                args.imageUrl_2 = resp.attachments[1].url
-                args.screenshot_2 = false
-            end
-            TriggerServerEvent('Prefech:JD_logsV3:ScreenshotCB', args)
-        end
-    end)
-end)
-
 --[[ Exports ]]
 exports('discord', function(msg, player_1, player_2, color, channel) --[[ This is to support the export from v1. ]]
 	args ={

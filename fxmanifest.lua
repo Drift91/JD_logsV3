@@ -20,7 +20,7 @@ repository 'https://github.com/prefech/JD_logsV3'
 
 
 dependency 'yarn'
-dependency 'screenshot-basic'
+dependency 'screencapture'
 
 -- Server Scripts
 server_scripts {

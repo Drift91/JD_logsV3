@@ -24,7 +24,7 @@
 ### 🛠 Requirements
 
 - FXServer With at least build: `5562`
-- screenshot-basic
+- {screencapture](https://github.com/itschip/screencapture)
 - A Discord Server
 
 ### ✅ Main Features
